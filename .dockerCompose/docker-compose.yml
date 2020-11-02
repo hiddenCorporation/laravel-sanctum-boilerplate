@@ -118,7 +118,7 @@ services:
           - https_proxy
           - no_proxy
       volumes:
-        - ../core/:/var/www:cached
+        - ../api/:/var/www:cached
         - docker-in-docker:/certs/client
       extra_hosts:
         - "dockerhost:10.0.75.1"
@@ -214,7 +214,7 @@ services:
           - no_proxy
       volumes:
         - ../.laradock/php-fpm/php7.3.ini:/usr/local/etc/php/php.ini
-        - ../core/:/var/www:cached
+        - ../api/:/var/www:cached
         - docker-in-docker:/certs/client
       expose:
         - "9000"
@@ -245,7 +245,7 @@ services:
           - https_proxy
           - no_proxy
       volumes:
-        - ../core/:/var/www:cached
+        - ../api/:/var/www:cached
         - ./logs/nginx/:/var/log/nginx
         - ../.laradock/nginx/sites/:/etc/nginx/sites-available
         - ../.laradock/nginx/ssl/:/etc/nginx/ssl
@@ -282,7 +282,7 @@ services:
         DOCKER_TLS_SAN: DNS:docker-in-docker      
       privileged: true
       volumes:
-        - ../core/:/var/www
+        - ../api/:/var/www
         - docker-in-docker:/certs/client
       expose:
         - 2375
